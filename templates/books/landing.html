@@ -1,0 +1,39 @@
+{% extends './base.html' %}
+
+
+
+{% block title %}
+landing
+{% endblock %}
+
+
+{% block content %}
+
+<a href="{{ url_for('books.create_book') }}" class="btn btn-lg btn-info d-grid gap-2 col-6 mx-auto  m-5 shadow" style="background-color:#FAF0E6">Add Your Book</a>
+<div style="display:flex;
+            flex-direction: row;
+            justify-content:space-around ; /* or center, flex-start, flex-end, space-around  space-between*/
+            align-items: center; /* or flex-start, flex-end, stretch, baseline */
+            flex-wrap: wrap; " >
+{% for b in books %}
+
+<div class="card shadow m-3 h-25" style="width: 18rem;">
+  <img src="{{b.image_url}}" class="custom-img" alt="..." >
+  <div class="card-body">
+    <h5 class="card-title">{{ b.title }}</h5>
+    <p class="card-text">{{ b.description }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{ b.num_page }}</li>
+  </ul>
+  <div class="card-body">
+        <a href="{{ url_for('books.update_book', id=b.id) }}" class="btn btn-outline-success">Update</a>
+        <a href="{{ url_for('books.delete_book', id=b.id) }}" class="btn btn-outline-danger">Delete</a>
+        <a href="{{ url_for('books.show_book', id=b.id) }}" class="btn btn-outline-info">Detail</a>
+  </div>
+</div>
+
+{% endfor %}
+  </div>
+
+{% endblock %}

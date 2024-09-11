@@ -1,0 +1,23 @@
+{% extends './base.html' %}
+
+{% block title %}
+ details
+{% endblock %}
+
+
+{% block content %}
+
+<div class="card m-5 h-25 w-50 shadow">
+  <img src="{{books.image_url}}" class="card-img-top " alt="...">
+  <div class="card-body m-2">
+      <div class="card-title"><h1 >{{ books.title }}</h1>
+  </div>
+    <p class="card-text fw-bold"> <h3 >Description : {{ books.description }}</h3></p>
+    <p class="card-text fw-bold">Pages : {{ books.num_page }}</p>
+  </div>
+  <div class="card-body">
+        <a href="{{ url_for('books.update_book', id=books.id) }}" class="btn btn-outline-success d-grid gap-2">Update</a>
+        <a href="{{ url_for('books.delete_book', id=books.id) }}" class="btn btn-outline-danger d-grid gap-2">Delete</a>
+  </div>
+</div>
+{% endblock %}
